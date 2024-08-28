@@ -2,6 +2,8 @@
 
 This is a simple chat page application built with Next and TypeScript. It allows users to enter a message, send it to the OpenAI API, and receive a response that is displayed on the page. The application features a loading state, Markdown parsing, and HTML sanitization using `marked` and `DOMPurify`.
 
+![Ask and get answers](chat_with_me.png)
+
 ## Features
 
 - **Next with TypeScript**: Provides a strongly typed, scalable foundation for the application.
