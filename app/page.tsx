@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { marked } from "marked";
-import DOMPurify from "dompurify";
+// import { marked } from "marked";
 
-interface ApiResponse {
-  content: string;
-}
+// interface ApiResponse {
+//   content: string;
+// }
 
 export default function Home() {
   const [message, setMessage] = useState<string>("");
@@ -34,12 +33,9 @@ export default function Home() {
         throw new Error("Failed to fetch response");
       }
 
-      const data: ApiResponse = await res.json();
+      const data = await res.json();
 
-      const rawHtml = marked.parse(data.content);
-      const cleanHtml = DOMPurify.sanitize(rawHtml);
-
-      setResponse(cleanHtml);
+      setResponse(data.content);
     } catch (error) {
       setResponse("Error: Unable to get a response");
     } finally {
@@ -80,10 +76,9 @@ export default function Home() {
           )}
 
           {response && !isLoading && (
-            <div
-              className='mt-4 p-3 bg-gray-700 text-white rounded animate-fade-in'
-              dangerouslySetInnerHTML={{ __html: response }}
-            />
+            <div className='mt-4 p-3 bg-gray-700 text-white rounded animate-fade-in'>
+              <p>{response}</p>
+            </div>
           )}
         </div>
       </section>
